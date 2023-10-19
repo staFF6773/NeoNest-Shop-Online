@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developers | Pagos</title>
+    <link rel="stylesheet" type="text/css" href="/css/pago.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Página de Pago</h2>
+        <form id="paymentForm">
+            <label for="tarjeta">Número de Tarjeta:</label>
+            <input type="text" id="tarjeta" name="tarjeta" placeholder="XXXX-XXXX-XXXX-XXXX" required>
+
+            <label for="nombre">Nombre en la Tarjeta:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre Apellido" required>
+
+            <label for="expiracion">Fecha de Expiración:</label>
+            <input type="text" id="expiracion" name="expiracion" placeholder="MM/AA" required>
+
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" placeholder="XXX" required>
+
+            <button type="button" onclick="validarYRealizarPago()">Pagar</button>
+        </form>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            <i class="fas fa-check-circle check-icon"></i>
+            <p id="modalMessage">Pago realizado con éxito.</p>
+            <a href="index.html"><button>Volver a la Página Principal</button></a>
+        </div>
+    </div>
+
+    <script>
+        function mostrarModal() {
+            var modal = document.getElementById('modal');
+            modal.style.display = 'block';
+        }
+
+        function cerrarModal() {
+            var modal = document.getElementById('modal');
+            modal.style.display = 'none';
+        }
+
+        function validarYRealizarPago() {
+            var tarjeta = document.getElementById('tarjeta').value;
+            var nombre = document.getElementById('nombre').value;
+            var expiracion = document.getElementById('expiracion').value;
+            var cvv = document.getElementById('cvv').value;
+
+            // Validar que todos los campos estén completos
+            if (tarjeta && nombre && expiracion && cvv) {
+                // Aquí podrías agregar lógica para procesar el pago
+                mostrarModal();
+            } else {
+                alert('Por favor, complete todos los campos antes de realizar el pago.');
+            }
+        }
+    </script>
+
+</body>
+</html>
